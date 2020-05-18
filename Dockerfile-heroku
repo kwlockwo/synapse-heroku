@@ -1,0 +1,13 @@
+FROM matrixdotorg/synapse
+
+RUN apk add --no-cache gettext
+
+# disable entrypoint from base image
+ENTRYPOINT []
+
+COPY ./data /data
+COPY ./conf /conf
+COPY ./start-server.sh /start-server.sh
+COPY ./start-heroku.py /start-heroku.py
+
+CMD ["/start-server.sh"]
